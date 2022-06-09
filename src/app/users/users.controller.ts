@@ -1,4 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseUUIDPipe, Post, Put } from '@nestjs/common';
+import { CreateUserDTO } from './dto/create-user.dto';
+import { UpdateUserDTO } from './dto/update-user.dto';
 import { UsersService } from './users.service';
 
   @Controller('/api/v1/users')
@@ -11,7 +13,7 @@ import { UsersService } from './users.service';
   }
 
   @Post()
-  async create(@Body() body) {
+  async create(@Body() body: CreateUserDTO) {
     console.log(body)
     return await this.usersService.create(body);
   }
@@ -22,7 +24,7 @@ import { UsersService } from './users.service';
   }
 
   @Put(':id')
-  async update(@Param('id', new ParseUUIDPipe()) id: string, @Body() body) {
+  async update(@Param('id', new ParseUUIDPipe()) id: string, @Body() body: UpdateUserDTO) {
     return await this.usersService.update(id, body);
   }
 
