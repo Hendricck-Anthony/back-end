@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { BackendModule } from './app/users/backend.module';
+import { UsersModule } from './app/users/users.module';
 
 
 @Module({
@@ -18,7 +18,7 @@ import { BackendModule } from './app/users/backend.module';
       synchronize: false,
       logging:true
     }),
-    BackendModule,
+    UsersModule,
   ]
 
 })
