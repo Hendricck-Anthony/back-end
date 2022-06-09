@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { BackendModule } from './app/backend/backend.module';
+import { BackendModule } from './app/users/backend.module';
 
 
 @Module({
@@ -15,7 +15,8 @@ import { BackendModule } from './app/backend/backend.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       entities: [__dirname + '/**/*.entity{.js,.ts}'],
-      synchronize: true,
+      synchronize: false,
+      logging:true
     }),
     BackendModule,
   ]

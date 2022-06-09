@@ -10,7 +10,7 @@ from 'typeorm';
 export class BackendEntity {
     
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    usr_id: string;
 
     @Column({ name: 'usr_name', width: 50 })
     usr_name: string;

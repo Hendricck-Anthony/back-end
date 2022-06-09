@@ -2,17 +2,18 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseUUIDPi
 import { BackendService } from './backend.service';
 import { BackendModule } from './backend.module';
 
-@Controller('backend')
-export class BackendController {
-    constructor(private readonly backendService: BackendService) {}
+  @Controller('backend')
+  export class BackendController {
+  constructor(private readonly backendService: BackendService) {}
 
-    @Get()
-    async findAll() {
-    return await this.backendService.findAll();
+  @Get()
+  async findAll() {
+  return await this.backendService.findAll();
   }
 
   @Post()
   async create(@Body() body) {
+    console.log(body)
     return await this.backendService.create(body);
   }
 

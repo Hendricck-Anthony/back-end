@@ -15,9 +15,9 @@ export class BackendService {
     return await this.backendEntity.find();
   }
 
-  async findOneOrFail(id) {
+  async findOneOrFail(id: string) {
     try {
-      return await this.backendEntity.findOneOrFail(id);
+      return await  this.backendEntity.findOneOrFail({where:{usr_id:id}});
     } catch (error) {
       throw new NotFoundException(error.message);
     }
@@ -36,7 +36,7 @@ export class BackendService {
 
   async deleteById(id: string) {
     await this.findOneOrFail(id);
-    await this.backendEntity.softDelete(id);
+    return await this.backendEntity.delete(id);
   }
 
 }
