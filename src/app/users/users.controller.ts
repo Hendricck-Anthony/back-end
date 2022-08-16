@@ -12,7 +12,7 @@ import { UsersService } from './users.service';
   return await this.usersService.findAll();
   }
 
-  @Post()
+  @Post('/createuser')
   async create(@Body() body: CreateUserDTO) {
     console.log(body)
     return await this.usersService.create(body);
