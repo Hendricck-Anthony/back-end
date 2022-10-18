@@ -12,7 +12,7 @@ import { RegistrationService } from './registration.service';
   return await this.registrationService.findAll();
   }
 
-  @Post()
+  @Post('/createregistration')
   async create(@Body() body: CreateRegistrationDTO) {
     console.log(body)
     return await this.registrationService.create(body);

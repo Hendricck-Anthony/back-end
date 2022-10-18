@@ -12,7 +12,7 @@ import { PolosService } from './polos.service';
   return await this.polosService.findAll();
   }
 
-  @Post()
+  @Post('/createpolos')
   async create(@Body() body: CreatePoloDTO) {
     console.log(body)
     return await this.polosService.create(body);
