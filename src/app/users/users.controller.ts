@@ -1,9 +1,23 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseUUIDPipe, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  ParseUUIDPipe,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
 import { UsersService } from './users.service';
+import { AuthGuard } from '@nestjs/passport';
 
   @Controller('/api/v1/users')
+  // @UseGuards(AuthGuard('jwt'))
   export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -13,14 +27,14 @@ import { UsersService } from './users.service';
   }
 
   @Post('/createuser')
-  async create(@Body() body: CreateUserDTO) {
+  async store(@Body() body: CreateUserDTO) {
     console.log(body)
-    return await this.usersService.create(body);
+    return await this.usersService.store(body);
   }
 
   @Get(':id')
   async show(@Param('id', new ParseUUIDPipe()) id: string) {
-    return await this.usersService.findOneOrFail(id);
+    return await this.usersService.findOneOrFail({usr_id:id});
   }
 
   @Put(':id')

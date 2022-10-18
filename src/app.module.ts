@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { PolosModule } from './app/polos/polos.module';
 import { RegistrationModule } from './app/registration/registration.module';
 import { UsersModule } from './app/users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -20,9 +21,7 @@ import { UsersModule } from './app/users/users.module';
       synchronize: false,
       logging:true
     }),
-    PolosModule,
-    RegistrationModule,
-    UsersModule
+    AuthModule
     
   ]
 
