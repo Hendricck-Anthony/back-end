@@ -1,7 +1,6 @@
 import {PartialType} from '@nestjs/mapped-types'
 import { CreateUserDTO } from './create-user.dto';
 import { IsEmail, isNotEmpty, IsNotEmpty, Matches } from "class-validator"
-import { RegExHelper } from "src/helpers/regex.helper";
 
 export class UpdateUserDTO extends PartialType(CreateUserDTO){
 
@@ -19,6 +18,5 @@ export class UpdateUserDTO extends PartialType(CreateUserDTO){
     usr_role: string;
     
     @IsNotEmpty()
-    @Matches(RegExHelper.password)
     usr_password: string;
 }
