@@ -14,7 +14,6 @@ import { RegistrationService } from './registration.service';
 
   @Post('/createregistration')
   async create(@Body() body: CreateRegistrationDTO) {
-    console.log(body)
     return await this.registrationService.create(body);
   }
 
@@ -25,12 +24,22 @@ import { RegistrationService } from './registration.service';
 
   @Put(':id')
   async update(@Param('id', new ParseUUIDPipe()) id: string, @Body() body: UpdateRegistrationDTO) {
-    return await this.registrationService.update(id, body);
+    return await this.registrationService.updateAndSendContract(id, body);
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async destroy(@Param('id', new ParseUUIDPipe()) id: string) {
     await this.registrationService.deleteById(id);
+  }
+
+  @Get('/generatepdf/:id')
+  generatePDF(@Param('id') id: string) {
+    return this.registrationService.generatePDF(id);
+  }
+
+  @Get('/sendzapsigncontract/:id')
+  sendZapSignContract(@Param('id') id: string) {
+    return this.registrationService.sendZapSignContract(id);
   }
 }
