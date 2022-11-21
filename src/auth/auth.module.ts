@@ -9,9 +9,11 @@ import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { PolosModule } from 'src/app/polos/polos.module';
 import { RegistrationModule } from 'src/app/registration/registration.module';
+import { WebhookModule } from 'src/app/webhook/webhook.module';
 
 @Module({
   imports: [
+    WebhookModule,
     PolosModule,
     RegistrationModule,
     UsersModule,
